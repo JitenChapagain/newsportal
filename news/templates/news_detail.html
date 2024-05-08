@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ news.en_title }}</title>
+</head>
+<body>
+    <h1>{{ news.en_title }}</h1>
+    <p>Published Date: {{ news.published_date }}</p>
+    <p>Description: {{ news.en_description }}</p>
+    {% if news.image %}
+        <img src="{{ news.image.url }}" alt="News Image">
+    {% endif %}
+    {% if news.file %}
+        <a href="{{ news.file.url }}">Download File</a>
+    {% endif %}
+</body>
+</html>
