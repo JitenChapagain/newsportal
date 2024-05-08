@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<ul>
+    <h1>Hi</h1>
+    {% for single_news in news %}
+    <li><a href="{% url 'news:news_detail' slug=single_news.slug %}">{{ single_news.en_title }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
