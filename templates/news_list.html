@@ -16,6 +16,7 @@
         <div class="card-body">
             <h5 class="card-title">{{ single_news.en_title }}</h5>
             <p class="card-text">{{ single_news.en_description }}.</p>
+            <p class="card-text"> {{ single_news.published_date }} </p>
             <a href="{% url 'news:news_detail' slug=single_news.slug %}" class="btn btn-primary">More Details</a>
         </div>
     </div><br><br>
