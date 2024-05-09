@@ -4,9 +4,10 @@
 <p>Published Date: {{ news.published_date }}</p>
 <p>Description: {{ news.en_description }}</p>
 {% if news.image %}
-<img src="{{ news.image.url }}" alt="News Image">
+<img src="{{ news.image.url }}" alt="News Image" style="max-width: 50%; height: auto;">
 {% endif %}
 {% if news.file %}
-<a href="{{ news.file.url }}">Download File</a>
+<br><br><br><a href="{{ news.file.url }}" class="btn btn-dark">Download File</a>
 {% endif %}
+<a href="javascript:history.back()" class="btn btn-secondary">Back</a>
 {% endblock %}

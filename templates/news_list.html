@@ -1,9 +1,24 @@
 {% extends 'base.html' %}
 {% block content %}
 <ul>
-    <h1>Hi</h1>
+    <hr>
+    <br><br>
+
     {% for single_news in news %}
-    <li><a href="{% url 'news:news_detail' slug=single_news.slug %}">{{ single_news.en_title }}</a></li>
+
+    <div class="card" style="width: 18rem;">
+        {% if single_news.image %}
+        <img class="card-img-top" src="{{ single_news.image.url }}" alt="Card image cap">
+        {% else %}
+        <!-- Add a placeholder image or alternative content if image is not available -->
+        <div class="placeholder-image" style="background-color: #ccc; height: 200px;"></div>
+        {% endif %}
+        <div class="card-body">
+            <h5 class="card-title">{{ single_news.en_title }}</h5>
+            <p class="card-text">{{ single_news.en_description }}.</p>
+            <a href="{% url 'news:news_detail' slug=single_news.slug %}" class="btn btn-primary">More Details</a>
+        </div>
+    </div><br><br>
     {% endfor %}
 </ul>
 {% endblock %}

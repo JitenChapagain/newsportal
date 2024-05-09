@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<br>
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+    <div class="carousel-indicators">
+        {% for index, item in news_with_index %}
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"
+            {% if forloop.first %}class="active" {% endif %} aria-label="Slide {{ forloop.counter0 }}"></button>
+        {% endfor %}
+    </div>
+
+    <div class="carousel-inner">
+        {% for index, item in news_with_index %}
+        <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            <div class="carousel-item-content">
+                {% if item.image %}
+                <img src="{{ item.image.url }}" class="d-block w-100 carousel-img" alt="{{ item.en_title }}">
+                {% else %}
+                <div class="placeholder-image" style="background-color: #ccc; height: 400px;"></div>
+                {% endif %}
+                <div class="carousel-caption">
+                    <h5>{{ item.en_title }}</h5>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+        data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+<style>
+    .carousel-img {
+        height: 400px;
+        width: 400px;
+        object-fit: cover;
+        margin: 0 auto;
+    }
+
+    .carousel-caption {
+        background-color: rgba(255, 0, 0, 0.212);
+        padding: 10px;
+        color: white;
+    }
+</style>
+{% endblock %}
