@@ -16,3 +16,6 @@ def news_list(request):
 def news_detail(request, slug):
     news = get_object_or_404(News, slug=slug, status=True)  # Get the news article by slug
     return render(request, 'news_detail.html', {'news': news})
+
+def about(request):
+    return render(request,'aboutus.html')
