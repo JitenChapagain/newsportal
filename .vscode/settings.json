@@ -1,3 +1,14 @@
 {
-    "git.ignoreLimitWarning": true
+    "git.ignoreLimitWarning": true,
+    "editor.fontFamily": "Consolas, 'Courier New', monospace,'Monospaced Argon','Cascadia Code',",
+    "python.testing.pytestArgs": [
+        "newsproject"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true,
+    "editor.defaultFormatter": "Zignd.html-css-class-completion",
+    "editor.formatOnSave": true,
+    "[django-html]": {
+        "editor.defaultFormatter": "junstyle.vscode-django-support"
+    }
 }

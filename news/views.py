@@ -2,10 +2,14 @@ from django.shortcuts import render, get_object_or_404
 from .models import News
 
 def index(request):
-    news = News.objects.filter(status=True)  # Filter only active news articles
-    news_with_index = [(index, item) for index, item in enumerate(news)]
+    sports_news = News.objects.filter(category__en_name='Sports', status=True)
+    science_news = News.objects.filter(category__en_name='Science', status=True)
+    astronomy_news = News.objects.filter(category__en_name='Astronomy', status=True)
+    
     context = {
-        'news_with_index': [(index + 1, item) for index, item in news_with_index]
+        'sports_news_with_index': [(index + 1, item) for index, item in enumerate(sports_news)],
+        'science_news_with_index': [(index + 1, item) for index, item in enumerate(science_news)],
+        'astronomy_news_with_index': [(index + 1, item) for index, item in enumerate(astronomy_news)],
     }
     return render(request, 'index.html', context)
 

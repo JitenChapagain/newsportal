@@ -2,47 +2,102 @@
 
 {% block content %}
 <br>
-<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-    <div class="carousel-indicators">
-        {% for index, item in news_with_index %}
-        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ forloop.counter0 }}"
-            {% if forloop.first %}class="active" {% endif %} aria-label="Slide {{ forloop.counter0 }}"></button>
-        {% endfor %}
-    </div>
-
-    <div class="carousel-inner">
-        {% for index, item in news_with_index %}
-        <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            <div class="carousel-item-content">
-                {% if item.image %}
-                <img src="{{ item.image.url }}" class="d-block w-100 carousel-img" alt="{{ item.en_title }}">
-                {% else %}
-                <div class="placeholder-image" style="background-color: #ccc; height: 400px;"></div>
-                {% endif %}
-                <div class="carousel-caption">
-                    <h5>{{ item.en_title }}</h5>
-                </div>
+<div class="category-container">
+    <!-- Sports Section -->
+    <section class="category-section">
+        <h2>Sports</h2>
+        <div id="sportsCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                {% for index, item in sports_news_with_index %}
+                <button type="button" data-bs-target="#sportsCarousel" data-bs-slide-to="{{ index }}"
+                    {% if forloop.first %}class="active" {% endif %} aria-label="Slide {{ index }}"></button>
+                {% endfor %}
             </div>
-        </div>
-        {% endfor %}
-    </div>
 
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
-        data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-    </button>
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+                {% for index, item in sports_news_with_index %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="carousel-item-content">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="d-block w-100 carousel-img" alt="{{ item.en_title }}">
+                        {% else %}
+                        <div class="placeholder-image" style="background-color: #ccc; height: 400px;"></div>
+                        {% endif %}
+                        <div class="carousel-caption">
+                            <h5>{{ item.en_title }}</h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#sportsCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#sportsCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Science Section -->
+    <section class="category-section">
+        <h2>Science</h2>
+        <div id="scienceCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
+            <!-- Carousel Indicators -->
+            <div class="carousel-indicators">
+                {% for index, item in science_news_with_index %}
+                <button type="button" data-bs-target="#scienceCarousel" data-bs-slide-to="{{ index }}"
+                    {% if forloop.first %}class="active" {% endif %} aria-label="Slide {{ index }}"></button>
+                {% endfor %}
+            </div>
+
+            <!-- Carousel Inner -->
+            <div class="carousel-inner">
+                {% for index, item in science_news_with_index %}
+                <div class="carousel-item {% if forloop.first %}active{% endif %}">
+                    <div class="carousel-item-content">
+                        {% if item.image %}
+                        <img src="{{ item.image.url }}" class="d-block w-100 carousel-img" alt="{{ item.en_title }}">
+                        {% else %}
+                        <div class="placeholder-image" style="background-color: #ccc; height: 400px;"></div>
+                        {% endif %}
+                        <div class="carousel-caption">
+                            <h5>{{ item.en_title }}</h5>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+
+            <!-- Carousel Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#scienceCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#scienceCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </section>
 </div>
 
 <style>
+    .category-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr; /* Two columns */
+        gap: 20px; /* Gap between sections */
+    }
+
     .carousel-img {
         height: 400px;
-        width: 400px;
+        width: 100%;
         object-fit: cover;
         margin: 0 auto;
     }

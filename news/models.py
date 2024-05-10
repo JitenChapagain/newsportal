@@ -33,7 +33,7 @@ class News(models.Model):
     np_title = models.CharField(max_length=200)
     en_description = models.TextField()
     np_description = models.TextField()
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)  # ForeignKey relationship
     tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
     slug = models.SlugField(unique=True, blank=True)
     published_date = models.DateTimeField(auto_now_add=True)
