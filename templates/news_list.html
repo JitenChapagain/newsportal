@@ -1,25 +1,25 @@
 {% extends 'base.html' %}
 {% block content %}
-<ul>
-    <hr>
-    <br><br>
-
+<div class="row">
     {% for single_news in news %}
-
-    <div class="card" style="width: 18rem;">
-        {% if single_news.image %}
-        <img class="card-img-top" src="{{ single_news.image.url }}" alt="Card image cap">
-        {% else %}
-        <!-- Add a placeholder image or alternative content if image is not available -->
-        <div class="placeholder-image" style="background-color: #ccc; height: 200px;"></div>
+        {% if forloop.counter0|divisibleby:3 and forloop.counter0 > 0 %}
+            </div><div class="row">
         {% endif %}
-        <div class="card-body">
-            <h5 class="card-title">{{ single_news.en_title }}</h5>
-            <p class="card-text">{{ single_news.en_description }}.</p>
-            <p class="card-text"> {{ single_news.published_date }} </p>
-            <a href="{% url 'news:news_detail' slug=single_news.slug %}" class="btn btn-primary">More Details</a>
+        <div class="col">
+            <div class="card">
+                {% if single_news.image %}
+                    <img class="card-img-top" src="{{ single_news.image.url }}" alt="Card image cap">
+                {% else %}
+                    <div class="placeholder-image" style="background-color: #ccc; height: 200px;"></div>
+                {% endif %}
+                <div class="card-body">
+                    <h5 class="card-title">{{ single_news.en_title }}</h5>
+                    <p class="card-text">{{ single_news.en_description }}.</p>
+                    <p class="card-text">{{ single_news.published_date }}</p>
+                    <a href="{% url 'news:news_detail' slug=single_news.slug %}" class="btn btn-primary">More Details</a>
+                </div>
+            </div>
         </div>
-    </div><br><br>
     {% endfor %}
-</ul>
+</div>
 {% endblock %}
