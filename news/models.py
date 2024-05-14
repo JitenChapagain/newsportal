@@ -40,11 +40,13 @@ class News(models.Model):
     image = models.ImageField(upload_to='news_images/', blank=True)
     file = models.FileField(upload_to='news_files/', blank=True)
     status = models.BooleanField(default=True)
+    SearchableFields = ['category', 'tag']
 
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.en_title)
         super(News, self).save(*args, **kwargs)
 
+    
     def __str__(self):
         return self.en_title

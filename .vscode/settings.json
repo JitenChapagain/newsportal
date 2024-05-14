@@ -1,6 +1,6 @@
 {
     "git.ignoreLimitWarning": true,
-    "editor.fontFamily": "Consolas, 'Courier New', monospace,'Monospaced Argon','Cascadia Code',",
+    "editor.fontFamily": "Merienda, Playpen Sans, Consolas, 'Courier New', monospace,'Monospaced Argon','Cascadia Code',",
     "python.testing.pytestArgs": [
         "newsproject"
     ],

@@ -21,6 +21,7 @@ class NewsAdmin(admin.ModelAdmin):
     list_display = ['en_title', 'np_title', 'category', 'tag', 'published_date', 'status']
     list_editable = ['status']
     prepopulated_fields = {'slug': ('en_title', )}
+    search_fields=News.SearchableFields
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == 'category':
